@@ -185,6 +185,10 @@ export default {
     draggable: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -361,6 +365,10 @@ export default {
       this.selectColor(this[this.currentModel]);
     },
     toggleMenu () {
+      if (this.disabled) {
+        return;
+      }
+      
       if (this.isMenuActive) {
         this.closeMenu();
         return;
